@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>กรอกข้อมูลแอร์</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-200 via-blue-300 to-blue-500">
+
+    <!-- กล่องหลัก -->
+    <div class="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-md text-gray-800 space-y-6">
+
+        <!-- หัวข้อ -->
+        <h1 class="text-2xl font-bold text-blue-600 text-center">ค้นหาเครื่องแอร์</h1>
+
+        <!-- ช่องกรอกชื่อรุ่น -->
+        <div>
+            <label class="block text-left mb-1 font-medium">ชื่อรุ่น (Model Name)</label>
+            <input type="text" id="model" placeholder="เช่น FTKC18XV2S"
+                class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        </div>
+
+        <!-- ช่องกรอก Serial Number -->
+        <div>
+            <label class="block text-left mb-1 font-medium">Serial Number</label>
+            <input type="text" id="serial" placeholder="เช่น E0000001"
+                class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        </div>
+
+        <!-- ปุ่มยืนยัน -->
+        <button onclick="submitForm()"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition">
+            ✅ ยืนยัน
+        </button>
+        <button onclick="window.location.href='next.html'"
+            class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 rounded-xl transition">
+            ⬅ ย้อนกลับ
+        </button>
+    </div>
+
+    <script>
+        function submitForm() {
+            const model = document.getElementById('model').value.trim();
+            const serial = document.getElementById('serial').value.trim();
+
+            if (!model || !serial) {
+                alert("กรุณากรอกชื่อรุ่นและ Serial Number ให้ครบถ้วน");
+                return;
+            }
+
+            // แสดงข้อมูล (หรือเชื่อมต่อ Firebase/OneDrive ได้)
+            alert(`ชื่อรุ่น: ${model}\nSerial: ${serial}`);
+
+            // ตัวอย่าง: ส่งไปยัง Firebase หรือ API ก็ได้
+            // sendToDatabase(model, serial);
+        }
+    </script>
+</body>
+
+</html>

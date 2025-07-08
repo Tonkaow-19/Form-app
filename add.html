@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>เพิ่มข้อมูลใหม่</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-200 via-teal-300 to-blue-400">
+
+    <!-- กล่องฟอร์ม -->
+    <div class="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-md text-gray-800 space-y-6">
+
+        <!-- หัวข้อ -->
+        <h1 class="text-2xl font-bold text-green-600 text-center">เพิ่มข้อมูลใหม่</h1>
+
+        <!-- Input: Model Name -->
+        <div>
+            <label class="block mb-1 font-medium">ชื่อรุ่น (Model Name)</label>
+            <input type="text" id="model" placeholder="เช่น FTKC18XV2S"
+                class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        </div>
+
+        <!-- Input: Serial Number -->
+        <div>
+            <label class="block mb-1 font-medium">Serial Number</label>
+            <input type="text" id="serial" placeholder="เช่น E0000001"
+                class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        </div>
+
+        <!-- ปุ่ม "บันทึกข้อมูล" -->
+        <button onclick="submitCreate()"
+            class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 rounded-xl transition">
+            💾 บันทึกข้อมูล
+        </button>
+
+        <!-- ปุ่มกลับหน้าหลัก -->
+        <button onclick="window.location.href='next.html'"
+            class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 rounded-xl transition">
+            ⬅ ย้อนกลับ
+        </button>
+    </div>
+
+    <script>
+        function submitCreate() {
+            const model = document.getElementById('model').value.trim();
+            const serial = document.getElementById('serial').value.trim();
+            const location = document.getElementById('location').value.trim();
+
+            if (!model || !serial || !location) {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                return;
+            }
+
+            // ตัวอย่าง: แสดงผล (จะเชื่อม Firebase / OneDrive ได้ภายหลัง)
+            alert(`✅ สร้างข้อมูลสำเร็จ:\n\nชื่อรุ่น: ${model}\nSerial: ${serial}\nสถานที่: ${location}`);
+
+            // 👉 ต่อกับ backend ได้ที่นี่ (Firebase / API)
+        }
+    </script>
+</body>
+
+</html>
